@@ -10,6 +10,7 @@ import SDWebImage
 
 class AlbumDetailsViewController: UIViewController {
 
+    
     @IBOutlet weak var photosSearch: UISearchBar!
     @IBOutlet weak var photosCV: UICollectionView!
     var albumDetailsVM : AlbumDetailsViewModel?
@@ -31,10 +32,21 @@ class AlbumDetailsViewController: UIViewController {
             }
         }
         
-
     }
+    
+}
 
-
+extension AlbumDetailsViewController : UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let imgViewerVC = self.storyboard?.instantiateViewController(withIdentifier: "ImgViewerVC") as! ImageViewerViewController
+        let data = albumDetailsVM?.getAlbumsAtIndex(index: indexPath.row)
+        imgViewerVC.photo = data
+        self.navigationController?.pushViewController(imgViewerVC, animated: true)
+        
+        
+    }
 }
 
 extension AlbumDetailsViewController : UICollectionViewDataSource{

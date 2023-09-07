@@ -10,6 +10,7 @@
 		1833CF573D207E3B009B1815 /* Pods_Users_ApplicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F71C426A4D5907F00970E81 /* Pods_Users_ApplicationTests.framework */; };
 		39A41A2BF1B088A724F4486F /* Pods_Users_Application_Users_ApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BEB2708BAC51A51AF66D8E /* Pods_Users_Application_Users_ApplicationUITests.framework */; };
 		441422512AAA1BE2000ED139 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441422502AAA1BE2000ED139 /* Network.swift */; };
+		441422532AAA2BA4000ED139 /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441422522AAA2BA4000ED139 /* ImageViewerViewController.swift */; };
 		4428C68D2AA8EA2D0001436A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428C68C2AA8EA2D0001436A /* AppDelegate.swift */; };
 		4428C68F2AA8EA2D0001436A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428C68E2AA8EA2D0001436A /* SceneDelegate.swift */; };
 		4428C6912AA8EA2D0001436A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428C6902AA8EA2D0001436A /* ProfileViewController.swift */; };
@@ -55,6 +56,7 @@
 		06A9B0BAA9F5A263F5749EBB /* Pods-Users ApplicationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Users ApplicationTests.debug.xcconfig"; path = "Target Support Files/Pods-Users ApplicationTests/Pods-Users ApplicationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29B64591E7B24F259B701D31 /* Pods-Users Application-Users ApplicationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Users Application-Users ApplicationUITests.release.xcconfig"; path = "Target Support Files/Pods-Users Application-Users ApplicationUITests/Pods-Users Application-Users ApplicationUITests.release.xcconfig"; sourceTree = "<group>"; };
 		441422502AAA1BE2000ED139 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		441422522AAA2BA4000ED139 /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		4428C6892AA8EA2D0001436A /* Users Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Users Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4428C68C2AA8EA2D0001436A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4428C68E2AA8EA2D0001436A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,9 +149,7 @@
 				4428C6BF2AA8F2750001436A /* Modules */,
 				4428C68C2AA8EA2D0001436A /* AppDelegate.swift */,
 				4428C68E2AA8EA2D0001436A /* SceneDelegate.swift */,
-				4428C6922AA8EA2D0001436A /* Main.storyboard */,
 				4428C6982AA8EA2E0001436A /* Assets.xcassets */,
-				4428C69A2AA8EA2E0001436A /* LaunchScreen.storyboard */,
 				4428C69D2AA8EA2E0001436A /* Info.plist */,
 				4428C6952AA8EA2D0001436A /* Users_Application.xcdatamodeld */,
 			);
@@ -178,6 +178,8 @@
 			children = (
 				44B8D1012AA92A6A00202881 /* AlbumDetailsScreen */,
 				4428C6C02AA8F27E0001436A /* ProfileScreen */,
+				4428C69A2AA8EA2E0001436A /* LaunchScreen.storyboard */,
+				4428C6922AA8EA2D0001436A /* Main.storyboard */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -243,6 +245,7 @@
 				44B8D0FF2AA926D900202881 /* AlbumDetailsTableViewController.swift */,
 				44B8D1032AA92AA500202881 /* AlbumDetailsCollectionViewCell.swift */,
 				44B8D1042AA92AA500202881 /* AlbumDetailsCollectionViewCell.xib */,
+				441422522AAA2BA4000ED139 /* ImageViewerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				4428C6C62AA8F3180001436A /* AlbumTableViewCell.swift in Sources */,
 				44B8D1092AA92C8100202881 /* AlbumDetailsViewModel.swift in Sources */,
 				44B8D1002AA926D900202881 /* AlbumDetailsTableViewController.swift in Sources */,
+				441422532AAA2BA4000ED139 /* ImageViewerViewController.swift in Sources */,
 				4428C6912AA8EA2D0001436A /* ProfileViewController.swift in Sources */,
 				4428C6CA2AA8F4F10001436A /* ProfileViewModel.swift in Sources */,
 				4428C68D2AA8EA2D0001436A /* AppDelegate.swift in Sources */,
