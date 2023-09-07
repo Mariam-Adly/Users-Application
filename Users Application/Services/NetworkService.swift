@@ -6,85 +6,71 @@
 //
 
 import Foundation
-import Alamofire
+
+import Moya
 
 class NetworkServices {
-    
+   
     static func getUser(userID: Int,completionHandler: @escaping (User?) -> Void ){
-        let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userID)")
-                guard let newUrl = url else {
-                    return
-                }
-                AF.request(newUrl,method: .get)
-                    .validate().response { resp in
-                        switch resp.result{
-                        case .success(let data):
-                            do{
-                                if let data = data{
-                                    let jsonData =  try JSONDecoder().decode(User.self, from: data)
-                                        completionHandler(jsonData)
-                                }
-                            }catch{
-                                print(error.localizedDescription)
-                            }
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                            completionHandler(nil)
-                        }
-                    }
-        
+        let provider = MoyaProvider<MyAPI>()
+        provider.request(.getUser(userID: userID)) { result in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do{
+                let jsonData =  try JSONDecoder().decode(User.self, from: data)
+                    completionHandler(jsonData)
+                }catch{
+                print(error.localizedDescription)
+            }
+            case .failure(let error):
+                completionHandler(nil)
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
     
     static func getAlbums(userID: Int,completionHandler: @escaping ([Album]?) -> Void ){
-        let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(userID)/albums")
-                guard let newUrl = url else {
-                    return
-                }
-                AF.request(newUrl,method: .get)
-                    .validate().response { resp in
-                        switch resp.result{
-                        case .success(let data):
-                            do{
-                                if let data = data{
-                                    let jsonData =  try JSONDecoder().decode([Album].self, from: data)
-                                        completionHandler(jsonData)
-                                }
-                            }catch{
-                                print(error.localizedDescription)
-                            }
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                            completionHandler(nil)
-                        }
-                    }
+        
+        let provider = MoyaProvider<MyAPI>()
+        provider.request(.getAlbums(userID: userID)) { result in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do{
+                let jsonData =  try JSONDecoder().decode([Album].self, from: data)
+                    completionHandler(jsonData)
+                }catch{
+                print(error.localizedDescription)
+            }
+            case .failure(let error):
+                completionHandler(nil)
+                print("Error: \(error.localizedDescription)")
+            }
+        }
         
     }
     
 
     
     static func getPhotos(albumID: Int,completionHandler: @escaping ([Photo]?) -> Void ){
-        let url = URL(string: "https://jsonplaceholder.typicode.com/albums/\(albumID)/photos")
-                guard let newUrl = url else {
-                    return
-                }
-                AF.request(newUrl,method: .get)
-                    .validate().response { resp in
-                        switch resp.result{
-                        case .success(let data):
-                            do{
-                                if let data = data{
-                                    let jsonData =  try JSONDecoder().decode([Photo].self, from: data)
-                                        completionHandler(jsonData)
-                                }
-                            }catch{
-                                print(error.localizedDescription)
-                            }
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                            completionHandler(nil)
-                        }
-                    }
         
+        let provider = MoyaProvider<MyAPI>()
+        provider.request(.getPhotos(albumID: albumID)) { result in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do{
+                let jsonData =  try JSONDecoder().decode([Photo].self, from: data)
+                    completionHandler(jsonData)
+                }catch{
+                print(error.localizedDescription)
+            }
+            case .failure(let error):
+                completionHandler(nil)
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
     
 }
