@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
+
 class ProfileViewModel{
     
     var bindResultToProfileViewController : (()->()) = {}
@@ -14,19 +17,14 @@ class ProfileViewModel{
             bindResultToProfileViewController()
         }
     }
-    
-    var bindResultToAlbumsTableViewController : (()->()) = {}
-    var albumsResult : [Album]?{
-        didSet{
-            bindResultToAlbumsTableViewController()
-        }
-    }
+    var albums : PublishSubject<[Album]> = PublishSubject()
+    var albumsResult : [Album]?
+
 
     func getUser(userID : Int){
         NetworkServices.getUser(userID: userID){
             [weak self](result) in
             self?.userResult = result
-            print("jessy\(self?.userResult)")
         }
     }
     
@@ -39,15 +37,13 @@ class ProfileViewModel{
         NetworkServices.getAlbums(userID: userID){
             [weak self](result) in
             self?.albumsResult = result
+            self?.albums.onNext(result ?? [Album()])
+            self?.albums.onCompleted()
         }
-    }
-    
-    func  getAlbumsCount()->Int{
-      return albumsResult?.count ?? 0
     }
     
     func getAlbumsAtIndex(index : Int)-> Album{
         return albumsResult?[index] ?? Album()
     }
-    
+
 }
